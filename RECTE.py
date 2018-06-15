@@ -99,9 +99,8 @@ def RECTE(
             trap_pop_f = min(trap_pop_f + dE2_f, nTrap_f)
         elif dt < 1200:
             # considering in orbit download scenario
-            if mode == 'staring':
-                trap_pop_s = min(trap_pop_s * np.exp(-(dt-exptime)/tau_trap_s), nTrap_s)
-                trap_pop_f = min(trap_pop_f * np.exp(-(dt-exptime)/tau_trap_f), nTrap_f)
+            trap_pop_s = min(trap_pop_s * np.exp(-(dt-exptime)/tau_trap_s), nTrap_s)
+            trap_pop_f = min(trap_pop_f * np.exp(-(dt-exptime)/tau_trap_f), nTrap_f)
         else:
             # switch orbit
             dt0_i = next(dt0)
