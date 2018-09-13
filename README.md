@@ -1,6 +1,6 @@
 # RECTE
 
-HST/WFC3 ramp effect model based on charge trapping. Journal references: [Zhou et al. (2017)](http://adsabs.harvard.edu/abs/2017AJ....153..243Z)
+HST/WFC3 ramp effect model based on charge trapping. Journal reference: [Zhou et al. (2017)](http://adsabs.harvard.edu/abs/2017AJ....153..243Z)
 
 ## Usage
 The first three input parameters are the intrinsic count rate (in **e/s**)
