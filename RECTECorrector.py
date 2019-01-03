@@ -1,6 +1,5 @@
 from astropy.io import fits
 
-import emcee
 import numpy as np
 from lmfit import Model, Parameters
 from scipy.interpolate import interp1d
