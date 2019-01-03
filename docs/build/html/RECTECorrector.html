@@ -1,0 +1,221 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>RECTECorrector module &#8212; RECTE 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-RECTECorrector">
+<span id="rectecorrector-module"></span><h1>RECTECorrector module<a class="headerlink" href="#module-RECTECorrector" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="RECTECorrector.RECTECorrector1">
+<code class="descclassname">RECTECorrector.</code><code class="descname">RECTECorrector1</code><span class="sig-paren">(</span><em>t</em>, <em>orbits</em>, <em>counts</em>, <em>p</em>, <em>expTime</em>, <em>include_transit=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#RECTECorrector1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.RECTECorrector1" title="Permalink to this definition">¶</a></dt>
+<dd><p>correct the ackbar model for one directional scan observations</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>t</strong> – time stamps of the exposures</li>
+<li><strong>orbits</strong> – orbit number of the exposures</li>
+<li><strong>counts</strong> – observed counts</li>
+<li><strong>p</strong> – Parameters objects to fit</li>
+<li><strong>expTime</strong> – exposure time</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">RECTE profile for correciting the light curve, best fit</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>count rate array, ackbar output, slope
+:rtype: tuple of four numpy array</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="RECTECorrector.RECTECorrector2">
+<code class="descclassname">RECTECorrector.</code><code class="descname">RECTECorrector2</code><span class="sig-paren">(</span><em>t</em>, <em>orbits</em>, <em>counts</em>, <em>p</em>, <em>expTime</em>, <em>scanDirect</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#RECTECorrector2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.RECTECorrector2" title="Permalink to this definition">¶</a></dt>
+<dd><p>correct the ackbar model for one directional scan observations</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>t</strong> – time stamps of the exposures</li>
+<li><strong>orbits</strong> – orbit number of the exposures</li>
+<li><strong>counts</strong> – observed counts</li>
+<li><strong>p</strong> – Parameters objects to fit</li>
+<li><strong>expTime</strong> – exposure time</li>
+<li><strong>scanDirect</strong> – scan direction (0 or 1) for each exposure</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">RECTE profile for correciting the light curve, best fit</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>count rate array, ackbar output, slope
+:rtype: tuple of four numpy array</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="RECTECorrector.rampProfile">
+<code class="descclassname">RECTECorrector.</code><code class="descname">rampProfile</code><span class="sig-paren">(</span><em>crate</em>, <em>slope</em>, <em>dTrap_s</em>, <em>dTrap_f</em>, <em>trap_pop_s</em>, <em>trap_pop_f</em>, <em>tExp</em>, <em>expTime</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#rampProfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.rampProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ramp profile for single directional scan</p>
+<p>And RECTE model parameters: number of traps, trapping coeeficient
+and trap life time</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>crate</strong> – average count rate in electron/second</li>
+<li><strong>slope</strong> – visit-long slope</li>
+<li><strong>dTrap_s</strong> – extra trapped slow charges between orbits</li>
+<li><strong>dTrap_f</strong> – extra trapped fast charges between orbits</li>
+<li><strong>trap_pop_s</strong> – initially trapped slow charges</li>
+<li><strong>trap_pop_f</strong> – initially trapped fast charges</li>
+<li><strong>tExp</strong> – beginning of each exposure</li>
+<li><strong>expTime</strong> – exposure time</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">observed counts</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="RECTECorrector.rampProfile2">
+<code class="descclassname">RECTECorrector.</code><code class="descname">rampProfile2</code><span class="sig-paren">(</span><em>crate1</em>, <em>slope1</em>, <em>crate2</em>, <em>slope2</em>, <em>dTrap_s</em>, <em>dTrap_f</em>, <em>trap_pop_s</em>, <em>trap_pop_f</em>, <em>tExp</em>, <em>expTime</em>, <em>scanDirect</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#rampProfile2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.rampProfile2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ramp profile for bi-directional scan And ackbar model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>crate1</strong> – average count rate in electron/second for the upward direction</li>
+<li><strong>slope1</strong> – visit-long slope for upward direction</li>
+<li><strong>crate2</strong> – average count rate in electron/second for downward direction</li>
+<li><strong>slope2</strong> – visit-long slope for downward direction</li>
+<li><strong>dTrap_s</strong> – extra trapped slow charges between orbits</li>
+<li><strong>dTrap_f</strong> – extra trapped fast charges between orbits</li>
+<li><strong>trap_pop_s</strong> – initially trapped slow charges</li>
+<li><strong>trap_pop_f</strong> – initially trapped fast charges</li>
+<li><strong>tExp</strong> – beginning of each exposure</li>
+<li><strong>expTime</strong> – exposure time</li>
+<li><strong>scanDirect</strong> – scan direction (0 or 1) for each exposure</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">observed counts</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">RECTE</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Yifan Zhou.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/RECTECorrector.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

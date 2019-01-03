@@ -1,0 +1,193 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>rampLightCurve module &#8212; RECTE 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-rampLightCurve">
+<span id="ramplightcurve-module"></span><h1>rampLightCurve module<a class="headerlink" href="#module-rampLightCurve" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="rampLightCurve.RECTE">
+<code class="descclassname">rampLightCurve.</code><code class="descname">RECTE</code><span class="sig-paren">(</span><em>nTrap_s</em>, <em>eta_trap_s</em>, <em>tau_trap_s</em>, <em>nTrap_f</em>, <em>eta_trap_f</em>, <em>tau_trap_f</em>, <em>cRates</em>, <em>tExp</em>, <em>exptime=180</em>, <em>trap_pop_s=0</em>, <em>trap_pop_f=0</em>, <em>dTrap_s=0</em>, <em>dTrap_f=0</em>, <em>dt0=0</em>, <em>lost=0</em>, <em>mode='scanning'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rampLightCurve.html#RECTE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rampLightCurve.RECTE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hubble Space Telescope ramp effet model</p>
+<p>Parameters:
+cRates – intrinsic count rate of each exposures, unit e/s
+tExp – start time of every exposures
+expTime – (default 180 seconds) exposure time of the time series
+trap_pop – (default 0) number of occupied traps at the beginning of the observations
+dTrap – (default [0])number of extra trap added in the gap
+between two orbits
+dt0 – (default 0) possible exposures before very beginning, e.g.,
+possible guiding adjustment
+lost – (default 0, no lost) proportion of trapped electrons that are not eventually detected
+(mode) – (default scanning, scanning or staring, or others), for scanning mode</p>
+<blockquote>
+<div>observation , the pixel no longer receive photons during the overhead
+time, in staring mode, the pixel keps receiving elctrons</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="rampLightCurve.rampCorrection">
+<code class="descclassname">rampLightCurve.</code><code class="descname">rampCorrection</code><span class="sig-paren">(</span><em>cRate</em>, <em>exptime</em>, <em>trap_pop_s=0</em>, <em>trap_pop_f=0</em>, <em>dTrap_s=0</em>, <em>dTrap_f=0</em>, <em>dt0=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rampLightCurve.html#rampCorrection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rampLightCurve.rampCorrection" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate the light curve suffer from ramp effect</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nTrap_s</strong> – number of traps (slow population)</li>
+<li><strong>eta_s</strong> – trapping efficiency (slow population)</li>
+<li><strong>tau_s</strong> – trapping timescale (slow population)</li>
+<li><strong>nTrap_f</strong> – number of traps (fast population)</li>
+<li><strong>eta_f</strong> – trapping efficiency (fast population)</li>
+<li><strong>tau_f</strong> – trapping timescale (fast population)</li>
+<li><strong>tExp</strong> – exposure time stamp</li>
+<li><strong>cRate</strong> – average count rate</li>
+<li><strong>trap_pop_s</strong> – initial trapped charges (slow populaiton)</li>
+<li><strong>trap_pop_f</strong> – initial trapped charges (fast population)</li>
+<li><strong>dTrap_s</strong> – extra trapped charges (slow population)</li>
+<li><strong>dTrap_f</strong> – extra trapped charges (fast population)</li>
+<li><strong>dt0</strong> – extra time before the first exposure</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">time stamps, observed count</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="rampLightCurve.rampModel">
+<code class="descclassname">rampLightCurve.</code><code class="descname">rampModel</code><span class="sig-paren">(</span><em>nTrap_s</em>, <em>eta_s</em>, <em>tau_s</em>, <em>nTrap_f</em>, <em>eta_f</em>, <em>tau_f</em>, <em>cRate</em>, <em>exptime</em>, <em>trap_pop_s=0</em>, <em>trap_pop_f=0</em>, <em>dTrap_s=0</em>, <em>dTrap_f=0</em>, <em>dt0=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rampLightCurve.html#rampModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rampLightCurve.rampModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate the light curve suffer from ramp effect</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nTrap_s</strong> – number of traps (slow population)</li>
+<li><strong>eta_s</strong> – trapping efficiency (slow population)</li>
+<li><strong>tau_s</strong> – trapping timescale (slow population)</li>
+<li><strong>nTrap_f</strong> – number of traps (fast population)</li>
+<li><strong>eta_f</strong> – trapping efficiency (fast population)</li>
+<li><strong>tau_f</strong> – trapping timescale (fast population)</li>
+<li><strong>tExp</strong> – exposure time stamp</li>
+<li><strong>cRate</strong> – average count rate</li>
+<li><strong>trap_pop_s</strong> – initial trapped charges (slow populaiton)</li>
+<li><strong>trap_pop_f</strong> – initial trapped charges (fast population)</li>
+<li><strong>dTrap_s</strong> – extra trapped charges (slow population)</li>
+<li><strong>dTrap_f</strong> – extra trapped charges (fast population)</li>
+<li><strong>dt0</strong> – extra time before the first exposure</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">time stamps, observed count</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">RECTE</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Yifan Zhou.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/rampLightCurve.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
