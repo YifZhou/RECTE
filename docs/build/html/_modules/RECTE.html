@@ -13,6 +13,8 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
    
@@ -40,12 +42,11 @@
 <span class="sd">Version 0.1: Adapted original IDL code (From D. Apai) to python by Yifan Zhou</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 
 
-<div class="viewcode-block" id="RECTE"><a class="viewcode-back" href="../index.html#RECTE.RECTE">[docs]</a><span class="k">def</span> <span class="nf">RECTE</span><span class="p">(</span>
+<div class="viewcode-block" id="RECTE"><a class="viewcode-back" href="../api.html#RECTE.RECTE">[docs]</a><span class="k">def</span> <span class="nf">RECTE</span><span class="p">(</span>
         <span class="n">cRates</span><span class="p">,</span>
         <span class="n">tExp</span><span class="p">,</span>
         <span class="n">exptime</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
@@ -57,7 +58,8 @@
         <span class="n">lost</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;scanning&#39;</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; This function calculates HST/WFC3/IR ramp effect profile based on the charge trapping explanation developed in Zhou et al. (2017).</span>
+    <span class="sd">&quot;&quot;&quot;This function calculates HST/WFC3/IR ramp effect profile based on</span>
+<span class="sd">the charge trapping explanation developed in Zhou et al. (2017).</span>
 
 <span class="sd">    :param cRates: intrinsic count rate of each exposures, unit: e/s</span>
 <span class="sd">    :type cRates: numpy.array</span>
@@ -65,19 +67,28 @@
 <span class="sd">    :type tExp: numpy.array</span>
 <span class="sd">    :param exptime: (default 180 seconds) exposure time</span>
 <span class="sd">    :type exptime: numpy.array or float</span>
-<span class="sd">    :param trap_pop_s: (default 0) number of occupied slow population charge traps before the very beginning of the observation</span>
+<span class="sd">    :param trap_pop_s: (default 0) number of occupied slow population</span>
+<span class="sd">        charge traps before the very beginning of the observation</span>
 <span class="sd">    :type trap_pop_s: float or numpy.array</span>
-<span class="sd">    :param trap_pop_f: (default 0) number of occupied fast population charge traps before the very beginning of the observation</span>
+<span class="sd">    :param trap_pop_f: (default 0) number of occupied fast population</span>
+<span class="sd">        charge traps before the very beginning of the observation</span>
 <span class="sd">    :type trap_pop_f: float or numpy.array</span>
-<span class="sd">    :param dTrap_s: (default [0]) number of additional charges trapped by slow population traps during earth occultation</span>
+<span class="sd">    :param dTrap_s: (default [0]) number of additional charges trapped</span>
+<span class="sd">        by slow population traps during earth occultation</span>
 <span class="sd">    :type dTrap_s: float or numpy.array</span>
-<span class="sd">    :param dTrap_f: (default [0]) number of additional charges trapped by fast population traps during earth occultation</span>
+<span class="sd">    :param dTrap_f: (default [0]) number of additional charges trapped</span>
+<span class="sd">        by fast population traps during earth occultation</span>
 <span class="sd">    :type dTrap_f: float or numpy.array</span>
-<span class="sd">    :param dt0: (default 0) exposure time before the very beginning of the observation. It could be due to guidence adjustment</span>
+<span class="sd">    :param dt0: (default 0) exposure time before the very beginning</span>
+<span class="sd">        of the observation. It could be due to guidence adjustment</span>
 <span class="sd">    :type dt0: float</span>
-<span class="sd">    :param lost: (default 0, no lost) fraction of trapped electrons that are not eventually detected</span>
+<span class="sd">    :param lost: (default 0, no lost) fraction of trapped electrons that are</span>
+<span class="sd">        not eventually detected</span>
 <span class="sd">    :type lost: float</span>
-<span class="sd">    :param mode: (default scanning, scanning or staring, or others), for scanning mode observation , the pixel no longer receive photons during the overhead time, in staring mode, the pixel keps receiving elctrons</span>
+<span class="sd">    :param mode: (default scanning, scanning or staring, or others),</span>
+<span class="sd">        for scanning mode observation , the pixel no longer receive</span>
+<span class="sd">        photons during the overhead time, in staring mode,</span>
+<span class="sd">        the pixel keps receiving elctrons</span>
 <span class="sd">    :type mode: string</span>
 
 <span class="sd">    :returns: observed counts</span>
@@ -150,10 +161,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># switch orbit</span>
             <span class="n">dt0_i</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">dt0</span><span class="p">)</span>
-            <span class="n">trap_pop_s</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
-                <span class="n">trap_pop_s</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">dt</span><span class="o">-</span><span class="n">exptime</span><span class="o">-</span><span class="n">dt0_i</span><span class="p">)</span><span class="o">/</span><span class="n">tau_trap_s</span><span class="p">)</span> <span class="o">+</span> <span class="nb">next</span><span class="p">(</span><span class="n">dTrap_s</span><span class="p">),</span> <span class="n">nTrap_s</span><span class="p">)</span>
-            <span class="n">trap_pop_f</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
-                <span class="n">trap_pop_f</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">dt</span><span class="o">-</span><span class="n">exptime</span><span class="o">-</span><span class="n">dt0_i</span><span class="p">)</span><span class="o">/</span><span class="n">tau_trap_f</span><span class="p">)</span> <span class="o">+</span> <span class="nb">next</span><span class="p">(</span><span class="n">dTrap_f</span><span class="p">),</span> <span class="n">nTrap_f</span><span class="p">)</span>
+            <span class="n">trap_pop_s</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">trap_pop_s</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">dt</span><span class="o">-</span><span class="n">exptime</span><span class="o">-</span><span class="n">dt0_i</span><span class="p">)</span><span class="o">/</span><span class="n">tau_trap_s</span><span class="p">)</span> <span class="o">+</span>
+                             <span class="nb">next</span><span class="p">(</span><span class="n">dTrap_s</span><span class="p">),</span> <span class="n">nTrap_s</span><span class="p">)</span>
+            <span class="n">trap_pop_f</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">trap_pop_f</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">dt</span><span class="o">-</span><span class="n">exptime</span><span class="o">-</span><span class="n">dt0_i</span><span class="p">)</span><span class="o">/</span><span class="n">tau_trap_f</span><span class="p">)</span> <span class="o">+</span>
+                             <span class="nb">next</span><span class="p">(</span><span class="n">dTrap_f</span><span class="p">),</span> <span class="n">nTrap_f</span><span class="p">)</span>
             <span class="n">f_i</span> <span class="o">=</span> <span class="n">cRates</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
             <span class="n">c1_s</span> <span class="o">=</span> <span class="n">eta_trap_s</span> <span class="o">*</span> <span class="n">f_i</span> <span class="o">/</span> <span class="n">nTrap_s</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">tau_trap_s</span>  <span class="c1"># a key factor</span>
             <span class="n">c1_f</span> <span class="o">=</span> <span class="n">eta_trap_f</span> <span class="o">*</span> <span class="n">f_i</span> <span class="o">/</span> <span class="n">nTrap_f</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">tau_trap_f</span>
@@ -191,6 +202,13 @@
 
 
 <h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Document Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getstarted.html">RECTE Model Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API and Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applications.html">Examples and Cookbook</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>

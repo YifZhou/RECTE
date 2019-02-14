@@ -13,8 +13,11 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RECTE Model Primer" href="getstarted.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -33,200 +36,44 @@
             
   <div class="section" id="documentation-for-recte">
 <h1>Documentation for RECTE<a class="headerlink" href="#documentation-for-recte" title="Permalink to this headline">¶</a></h1>
+<p>RECTE (Ramp Effect Charge Trapping Eliminator) models one of the most prominent HST/WFC3/IR systematics. The goals for developing this modelare to improve the precision and efficiency in HST/WFC3/IR time-resolved observations. We detailed the motivation, assumptions, derivations, and applications in <a class="reference external" href="http://stacks.iop.org/1538-3881/153/i=6/a=243?key=crossref.d8632f701456202d40ec5de454a41fff">Zhou et al. (2017)</a>.</p>
+<p>We also provide a python package for RECTE that can be easily incorporated in HST/WFC3/IR time-resolved data reduction pipelines. This document demonstrate the installation, usage, and applications for this package. We have also prepared a few Jupyter notebooks for cookbook-style demonstrations.</p>
+<p>If you have any questions, comments, or suggestions, please file an issue on github or drop the developer an <a class="reference external" href="mailto:yifzhou&#37;&#52;&#48;email&#46;arizona&#46;edu">email</a>.</p>
 <div class="toctree-wrapper compound">
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="how-is-ramp-effect-systematics-introduced-by-charge-trapping">
-<h3>How is ramp effect systematics introduced by charge trapping?<a class="headerlink" href="#how-is-ramp-effect-systematics-introduced-by-charge-trapping" title="Permalink to this headline">¶</a></h3>
-<p>To demonstrate ramp effect introduced by charge trapping, we created an intractive Jupyter notebook. You can download the notebook at <a href="#id1"><span class="problematic" id="id2">`</span></a>charge trapping demonstration &lt;<a class="reference external" href="https://github.com/YifZhou/RECTE/blob/master/RECTE%20Demonstration.ipynb">https://github.com/YifZhou/RECTE/blob/master/RECTE%20Demonstration.ipynb</a>&gt;`and run it locally. The Jupyter notebook allow to adjust model parameters and see the changes in the ramp profile in real time. For the detailed systematics mechanism, please refer to Zhou et al. (2017).</p>
-</div>
-<div class="section" id="how-effective-is-recte">
-<h3>How effective is RECTE?<a class="headerlink" href="#how-effective-is-recte" title="Permalink to this headline">¶</a></h3>
-<p>RECTE is effective in three ways:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>RECTE correction results in photon-noise limited light curves</li>
-<li>RECTE correct the entire light curve (including the first orbit) in a consistent manner. It saves precious HST time</li>
-<li>RECTE correction is not sensitive to the assumption on the baseline of the light curve, thus the is less degenerated with astrophysical signals.</li>
-</ol>
-</div></blockquote>
-</div>
-<div class="section" id="how-can-i-incorporate-recte-in-my-data-reduction-pipeline">
-<h3>How can I incorporate RECTE in my data reduction pipeline?<a class="headerlink" href="#how-can-i-incorporate-recte-in-my-data-reduction-pipeline" title="Permalink to this headline">¶</a></h3>
-<p>We created a Jupyter notebook to demonstrate the usage of RECTE. You can also find detailed descriptions in the <span class="xref std std-ref">cookbook_label</span> section.</p>
-</div>
-</div>
-<div class="section" id="examples-and-cookbook">
-<h2>Examples and Cookbook<a class="headerlink" href="#examples-and-cookbook" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="module-RECTE">
-<span id="recte-module"></span><h3>RECTE module<a class="headerlink" href="#module-RECTE" title="Permalink to this headline">¶</a></h3>
-<p>ramp effect model</p>
-<p>Version 1.0.0: published version</p>
-<p>Version 0.1: Adapted original IDL code (From D. Apai) to python by Yifan Zhou</p>
-<dl class="function">
-<dt id="RECTE.RECTE">
-<code class="descclassname">RECTE.</code><code class="descname">RECTE</code><span class="sig-paren">(</span><em>cRates</em>, <em>tExp</em>, <em>exptime=180</em>, <em>trap_pop_s=0</em>, <em>trap_pop_f=0</em>, <em>dTrap_s=0</em>, <em>dTrap_f=0</em>, <em>dt0=0</em>, <em>lost=0</em>, <em>mode='scanning'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTE.html#RECTE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTE.RECTE" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function calculates HST/WFC3/IR ramp effect profile based on the charge trapping explanation developed in Zhou et al. (2017).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>cRates</strong> (<em>numpy.array</em>) – intrinsic count rate of each exposures, unit: e/s</li>
-<li><strong>tExp</strong> (<em>numpy.array</em>) – time stamps for the exposures, unit: seconds</li>
-<li><strong>exptime</strong> (<em>numpy.array</em><em> or </em><em>float</em>) – (default 180 seconds) exposure time</li>
-<li><strong>trap_pop_s</strong> (<em>float</em><em> or </em><em>numpy.array</em>) – (default 0) number of occupied slow population charge traps before the very beginning of the observation</li>
-<li><strong>trap_pop_f</strong> (<em>float</em><em> or </em><em>numpy.array</em>) – (default 0) number of occupied fast population charge traps before the very beginning of the observation</li>
-<li><strong>dTrap_s</strong> (<em>float</em><em> or </em><em>numpy.array</em>) – (default [0]) number of additional charges trapped by slow population traps during earth occultation</li>
-<li><strong>dTrap_f</strong> (<em>float</em><em> or </em><em>numpy.array</em>) – (default [0]) number of additional charges trapped by fast population traps during earth occultation</li>
-<li><strong>dt0</strong> (<em>float</em>) – (default 0) exposure time before the very beginning of the observation. It could be due to guidence adjustment</li>
-<li><strong>lost</strong> (<em>float</em>) – (default 0, no lost) fraction of trapped electrons that are not eventually detected</li>
-<li><strong>mode</strong> (<em>string</em>) – (default scanning, scanning or staring, or others), for scanning mode observation , the pixel no longer receive photons during the overhead time, in staring mode, the pixel keps receiving elctrons</li>
+<p class="caption"><span class="caption-text">Document Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">RECTE Model Primer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getstarted.html#how-effective-is-recte">How effective is RECTE?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getstarted.html#recte-mechanisms-explanined">RECTE Mechanisms Explanined</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getstarted.html#recte-mechanism-demonstration">RECTE Mechanism Demonstration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ipython_notebook/RECTE_Mechanisms.html">Charge Trapping and Ramp effect in HST/WFC3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ipython_notebook/RECTE_Mechanisms.html#charge-trapping-processes">Charge Trapping Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipython_notebook/RECTE_Mechanisms.html#ramp-correction-demonstrations">Ramp Correction Demonstrations</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">observed counts</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">numpy.array</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-<p>see Examples and Cookbook</p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-RECTECorrector">
-<span id="rectecorrector-module"></span><h3>RECTECorrector module<a class="headerlink" href="#module-RECTECorrector" title="Permalink to this headline">¶</a></h3>
-<dl class="function">
-<dt id="RECTECorrector.RECTECorrector1">
-<code class="descclassname">RECTECorrector.</code><code class="descname">RECTECorrector1</code><span class="sig-paren">(</span><em>t</em>, <em>orbits</em>, <em>counts</em>, <em>p</em>, <em>expTime</em>, <em>include_transit=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#RECTECorrector1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.RECTECorrector1" title="Permalink to this definition">¶</a></dt>
-<dd><p>correct the ackbar model for one directional scan observations</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>t</strong> – time stamps of the exposures</li>
-<li><strong>orbits</strong> – orbit number of the exposures</li>
-<li><strong>counts</strong> – observed counts</li>
-<li><strong>p</strong> – Parameters objects to fit</li>
-<li><strong>expTime</strong> – exposure time</li>
+</li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">RECTE profile for correciting the light curve, best fit</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p>count rate array, ackbar output, slope
-:rtype: tuple of four numpy array</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="RECTECorrector.RECTECorrector2">
-<code class="descclassname">RECTECorrector.</code><code class="descname">RECTECorrector2</code><span class="sig-paren">(</span><em>t</em>, <em>orbits</em>, <em>counts</em>, <em>p</em>, <em>expTime</em>, <em>scanDirect</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#RECTECorrector2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.RECTECorrector2" title="Permalink to this definition">¶</a></dt>
-<dd><p>correct the ackbar model for one directional scan observations</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>t</strong> – time stamps of the exposures</li>
-<li><strong>orbits</strong> – orbit number of the exposures</li>
-<li><strong>counts</strong> – observed counts</li>
-<li><strong>p</strong> – Parameters objects to fit</li>
-<li><strong>expTime</strong> – exposure time</li>
-<li><strong>scanDirect</strong> – scan direction (0 or 1) for each exposure</li>
+</li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">RECTE profile for correciting the light curve, best fit</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p>count rate array, ackbar output, slope
-:rtype: tuple of four numpy array</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="RECTECorrector.rampProfile">
-<code class="descclassname">RECTECorrector.</code><code class="descname">rampProfile</code><span class="sig-paren">(</span><em>crate</em>, <em>slope</em>, <em>dTrap_s</em>, <em>dTrap_f</em>, <em>trap_pop_s</em>, <em>trap_pop_f</em>, <em>tExp</em>, <em>expTime</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#rampProfile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.rampProfile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ramp profile for single directional scan</p>
-<p>And RECTE model parameters: number of traps, trapping coeeficient
-and trap life time</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>crate</strong> – average count rate in electron/second</li>
-<li><strong>slope</strong> – visit-long slope</li>
-<li><strong>dTrap_s</strong> – extra trapped slow charges between orbits</li>
-<li><strong>dTrap_f</strong> – extra trapped fast charges between orbits</li>
-<li><strong>trap_pop_s</strong> – initially trapped slow charges</li>
-<li><strong>trap_pop_f</strong> – initially trapped fast charges</li>
-<li><strong>tExp</strong> – beginning of each exposure</li>
-<li><strong>expTime</strong> – exposure time</li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#required-packages">Required packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installations">Installations</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">observed counts</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="RECTECorrector.rampProfile2">
-<code class="descclassname">RECTECorrector.</code><code class="descname">rampProfile2</code><span class="sig-paren">(</span><em>crate1</em>, <em>slope1</em>, <em>crate2</em>, <em>slope2</em>, <em>dTrap_s</em>, <em>dTrap_f</em>, <em>trap_pop_s</em>, <em>trap_pop_f</em>, <em>tExp</em>, <em>expTime</em>, <em>scanDirect</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#rampProfile2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.rampProfile2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ramp profile for bi-directional scan And ackbar model</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>crate1</strong> – average count rate in electron/second for the upward direction</li>
-<li><strong>slope1</strong> – visit-long slope for upward direction</li>
-<li><strong>crate2</strong> – average count rate in electron/second for downward direction</li>
-<li><strong>slope2</strong> – visit-long slope for downward direction</li>
-<li><strong>dTrap_s</strong> – extra trapped slow charges between orbits</li>
-<li><strong>dTrap_f</strong> – extra trapped fast charges between orbits</li>
-<li><strong>trap_pop_s</strong> – initially trapped slow charges</li>
-<li><strong>trap_pop_f</strong> – initially trapped fast charges</li>
-<li><strong>tExp</strong> – beginning of each exposure</li>
-<li><strong>expTime</strong> – exposure time</li>
-<li><strong>scanDirect</strong> – scan direction (0 or 1) for each exposure</li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API and Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-RECTE">RECTE module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#module-RECTECorrector">RECTECorrector module</a></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">observed counts</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy.array</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="applications.html">Examples and Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ipython_notebook/RECTE_Demonstration.html">TRAPPIST-1 Demonstration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ipython_notebook/RECTE_Demonstration.html#lightcurve-preparations">Lightcurve Preparations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ipython_notebook/RECTE_Demonstration.html#demonstration-of-the-uncorrected-light-curves">Demonstration of the uncorrected light curves</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
@@ -247,11 +94,19 @@ and trap life time</p>
 
 
 <h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Document Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">RECTE Model Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API and Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications.html">Examples and Cookbook</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="getstarted.html" title="next chapter">RECTE Model Primer</a></li>
   </ul></li>
 </ul>
 </div>
