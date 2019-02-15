@@ -23,7 +23,7 @@ demonstrate how parameters that descriebe the intrument defects affect
 the shape of the ramp. The second part is to demonstrate how parameters
 that related to each observation can affect the ramp profile.
 
-.. code:: python
+.. code:: ipython3
 
     import ipywidgets as widgets
     from ipywidgets import interactive
@@ -61,7 +61,7 @@ parameters using the widgets under the plot. The output ramp profile
 will change accordingly. You can also change the ``crate`` or
 ``exptime`` parameter to adjust the fluence rate and exposure time.
 
-.. code:: python
+.. code:: ipython3
 
     def rampModelPlot(
         nTrap_s,
@@ -135,13 +135,16 @@ will change accordingly. You can also change the ``crate`` or
 
 .. parsed-literal::
 
-    interactive(children=(FloatText(value=1500.0, description='slow N', step=100.0), FloatText(value=0.012, descri…
+    <IPython.core.display.Javascript object>
+
+.. image:: RECTE_Mechanisms_files/fig1.png
+
 
 
 
 .. parsed-literal::
 
-    <Figure size 432x288 with 0 Axes>
+    interactive(children=(FloatText(value=1500.0, description='slow N', step=100.0), FloatText(value=0.012, descri…
 
 
 Ramp Correction Demonstrations
@@ -160,7 +163,7 @@ These parameters can be adjusted in the following intercative plot. This
 demontration shows how the model profile changes with the parameters
 that are fit during ramp effect corrections.
 
-.. code:: python
+.. code:: ipython3
 
     def rampCorrectionPlot(
         trap_pop_s,
@@ -215,11 +218,12 @@ that are fit during ramp effect corrections.
 
 .. parsed-literal::
 
-    interactive(children=(FloatSlider(value=50.0, description='slow initial', max=500.0, step=50.0), FloatSlider(v…
+    <IPython.core.display.Javascript object>
 
+.. image:: RECTE_Mechanisms_files/fig1.png
 
 
 .. parsed-literal::
 
-    <Figure size 432x288 with 0 Axes>
+    interactive(children=(FloatSlider(value=50.0, description='slow initial', max=500.0, step=50.0), FloatSlider(v…
 

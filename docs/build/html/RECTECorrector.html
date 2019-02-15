@@ -14,7 +14,6 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
    
@@ -37,7 +36,7 @@
 <span id="rectecorrector-module"></span><h1>RECTECorrector module<a class="headerlink" href="#module-RECTECorrector" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="RECTECorrector.RECTECorrector1">
-<code class="descclassname">RECTECorrector.</code><code class="descname">RECTECorrector1</code><span class="sig-paren">(</span><em>t</em>, <em>orbits</em>, <em>counts</em>, <em>p</em>, <em>expTime</em>, <em>include_transit=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#RECTECorrector1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.RECTECorrector1" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">RECTECorrector.</code><code class="descname">RECTECorrector1</code><span class="sig-paren">(</span><em>t</em>, <em>orbits</em>, <em>orbits_transit</em>, <em>counts</em>, <em>p</em>, <em>expTime</em>, <em>include_transit=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#RECTECorrector1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.RECTECorrector1" title="Permalink to this definition">¶</a></dt>
 <dd><p>correct the ackbar model for one directional scan observations</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -46,6 +45,7 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>t</strong> – time stamps of the exposures</li>
 <li><strong>orbits</strong> – orbit number of the exposures</li>
+<li><strong>orbits_transit</strong> – orbits in which transits/eclipses occur</li>
 <li><strong>counts</strong> – observed counts</li>
 <li><strong>p</strong> – Parameters objects to fit</li>
 <li><strong>expTime</strong> – exposure time</li>
@@ -63,7 +63,7 @@
 
 <dl class="function">
 <dt id="RECTECorrector.RECTECorrector2">
-<code class="descclassname">RECTECorrector.</code><code class="descname">RECTECorrector2</code><span class="sig-paren">(</span><em>t</em>, <em>orbits</em>, <em>counts</em>, <em>p</em>, <em>expTime</em>, <em>scanDirect</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#RECTECorrector2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.RECTECorrector2" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">RECTECorrector.</code><code class="descname">RECTECorrector2</code><span class="sig-paren">(</span><em>t</em>, <em>orbits</em>, <em>orbits_transit</em>, <em>counts</em>, <em>p</em>, <em>expTime</em>, <em>scanDirect</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RECTECorrector.html#RECTECorrector2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#RECTECorrector.RECTECorrector2" title="Permalink to this definition">¶</a></dt>
 <dd><p>correct the ackbar model for one directional scan observations</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -72,6 +72,7 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>t</strong> – time stamps of the exposures</li>
 <li><strong>orbits</strong> – orbit number of the exposures</li>
+<li><strong>orbits_transit</strong> – orbits in which transits/eclipses occur</li>
 <li><strong>counts</strong> – observed counts</li>
 <li><strong>p</strong> – Parameters objects to fit</li>
 <li><strong>expTime</strong> – exposure time</li>

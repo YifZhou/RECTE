@@ -39,13 +39,13 @@ this demonstration and stored in a python shelve file.
 Uncorrected light curves
 ------------------------
 
-.. code:: python
+.. code:: ipython3
 
     import shelve
     import matplotlib.pyplot as plt
     %matplotlib notebook
 
-.. code:: python
+.. code:: ipython3
 
     # First, restore light curve array from the shelve file
     DBFileName = './demonstration_data/binned_lightcurves_visit_01.shelve'
@@ -59,7 +59,7 @@ Uncorrected light curves
     expTime = saveDB['expTime']
     saveDB.close()
 
-.. code:: python
+.. code:: ipython3
 
     # plot light curve of the second channel and the sixth channel
     fig1 = plt.figure(figsize=(10, 6))
@@ -101,7 +101,7 @@ informative fitting results.
 In the following, we write a wrapper function ``removeRamp`` to get the
 systematics-removed light curves
 
-.. code:: python
+.. code:: ipython3
 
     from RECTE import RECTE
     from lmfit import Parameters, Model
@@ -153,7 +153,7 @@ systematics-removed light curves
             slopeArray[i, :] = slope
         return correctedArray, correctedErrArray, modelArray, crateArray, slopeArray
 
-.. code:: python
+.. code:: ipython3
 
     import pandas as pd
     import numpy as np
@@ -185,7 +185,7 @@ Result plot
 Best-fit Models
 ~~~~~~~~~~~~~~~
 
-.. code:: python
+.. code:: ipython3
 
     fig2 = plt.figure(figsize=(10, 6))
     ax1 = fig2.add_subplot(211)
@@ -232,7 +232,7 @@ Best-fit Models
 Corrected light curves
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: python
+.. code:: ipython3
 
     fig3 = plt.figure(figsize=(10, 6))
     ax1 = fig3.add_subplot(211)
