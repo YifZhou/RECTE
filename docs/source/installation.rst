@@ -21,8 +21,8 @@ For Jupyter notebooks
 
 You may download the ``requirements.txt`` file and do
 
-.. code-block::
-   
+.. code-block:: bash
+                
    pip install -r requirement.txt
 
 to ensure all requirements are satisfied.
