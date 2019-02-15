@@ -3,7 +3,7 @@ from __future__ import division, absolute_import
 from __future__ import print_function
 import itertools
 import numpy as np
-from HST.timeSeries import HSTsinLC, HSTtransitLC
+from HST_utility import HSTsinLC, HSTtransitLC
 
 
 def RECTE(
@@ -242,10 +242,10 @@ if __name__ == '__main__':
     cRate = 200
     exptime = 100
     lc, t = rampModel(nTrap_s,
-                           eta_s,
-                           tau_s,
-                           nTrap_f,
-                           eta_f,
-                           tau_f,
-                           cRate,
-                           exptime)
+                      eta_s,
+                      tau_s,
+                      nTrap_f,
+                      eta_f,
+                      tau_f,
+                      cRate,
+                      exptime)

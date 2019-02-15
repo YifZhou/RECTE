@@ -17,11 +17,11 @@ For transit profile calculations
 
 * batman-package
 
-You may download the ``requirement.txt`` file and do
+You may download the ``requirements.txt`` file and do
 
 .. code-block::
    
-   pip install requirement.txt
+   pip install -r requirement.txt
 
 to ensure all requirements are satisfied.
 

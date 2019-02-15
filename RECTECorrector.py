@@ -1,5 +1,3 @@
-from astropy.io import fits
-
 import numpy as np
 from lmfit import Model, Parameters
 from scipy.interpolate import interp1d
@@ -43,12 +41,13 @@ def rampProfile(crate, slope, dTrap_s, dTrap_f, trap_pop_s,
     return obsCounts
 
 
-def RECTECorrector1(t, orbits, counts, p, expTime,
+def RECTECorrector1(t, orbits, orbits_transit, counts, p, expTime,
                     include_transit=False):
     """correct the ackbar model for one directional scan observations
 
     :param t: time stamps of the exposures
     :param orbits: orbit number of the exposures
+    :param orbits_transit: orbits in which transits/eclipses occur
     :param counts: observed counts
     :param p: Parameters objects to fit
     :param expTime: exposure time
@@ -63,7 +62,7 @@ def RECTECorrector1(t, orbits, counts, p, expTime,
     rampModel = Model(rampProfile, independent_vars=['tExp', 'expTime'])
     t0 = t - t[0]  # make the first element in time array 0
     weights = np.ones_like(t)
-    weights[orbits == 2] = 0
+    weights[np.in1d(orbits, orbits_transit)] = 0
     # weights[orbits == 3] = 0
     fitResult = rampModel.fit(
         counts,
@@ -132,6 +131,7 @@ def rampProfile2(crate1, slope1, crate2, slope2, dTrap_s, dTrap_f,
 
 def RECTECorrector2(t,
                     orbits,
+                    orbits_transit,
                     counts,
                     p,
                     expTime,
@@ -140,6 +140,7 @@ def RECTECorrector2(t,
 
     :param t: time stamps of the exposures
     :param orbits: orbit number of the exposures
+    :param orbits_transit: orbits in which transits/eclipses occur
     :param counts: observed counts
     :param p: Parameters objects to fit
     :param expTime: exposure time
@@ -163,7 +164,7 @@ def RECTECorrector2(t,
     t0 = t - t[0]  # make the first element in time array 0
     weights = np.ones_like(t)
     # if not inlucde the transit orbit,
-    weights[orbits == 2] = 0
+    weights[np.in1d(orbits, orbits_transit)] = 0
     fitResult = rampModel2.fit(
         counts,
         tExp=t0,
@@ -172,8 +173,7 @@ def RECTECorrector2(t,
         weights=weights,
         params=p,
         method='powell')
-    # m = batman.TransitModel(transit_params, tBJD + 0.5 * expTime / 86400,
-    #                         supersample_factor=9, exp_time=expTime/86400)
+
     counts_fit = np.zeros_like(counts, dtype=float)
     counts_fit[upIndex] = (fitResult.params['crate1'].value * (
         1 + t0 * fitResult.params['slope1'] / 1e7))[upIndex]
@@ -192,7 +192,7 @@ def RECTECorrector2(t,
     crates = np.zeros_like(RECTE_out)
     crates[upIndex] = fitResult.params['crate1'] * slopes[upIndex]
     crates[downIndex] = fitResult.params['crate2'] * slopes[downIndex]
-    return correctTerm, crates, RECTE_out, crates
+    return correctTerm, crates, RECTE_out, slopes
 
 
 if __name__ == '__main__':
