@@ -12,8 +12,8 @@ Light curve Preparations
 ------------------------
 
 The light curve for each wavelength channel needs to be extracted from
-the observation ima frame before applying the RECTE correction (or any
-other types of ramp effect correction). The reference for this
+the `ima` frame before applying the RECTE correction (or any
+other systematics correction). The reference for this
 procedures is Deming et al. (2013). Light curves were pre-calculated for
 this demonstration and stored in a python shelve file.
 
@@ -81,7 +81,7 @@ Uncorrected light curves
 
 
 RECTE corrections
-=================
+-----------------
 
 We will use the convenience functions from the ``RECTECorrector`` module
 to make corrections. Two functions ``RECTECorrrector1`` and

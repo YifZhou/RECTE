@@ -1,3 +1,5 @@
+.. _install:
+
 Installation and Usage
 ======================
 
@@ -13,7 +15,7 @@ For fitting/optimization
 * lmfit
 * emcee
 
-For Jupyter notebooks
+For Jupyter notebooks demonstration
 
 * jupyter
 * ipywidgets
@@ -37,9 +39,9 @@ Ramp profile calculation is done by function ``RECTE`` in ``RECTE.py`` Please do
                 from RECTE import RECTE
 
 
-We also created convenience functions for ramp effect fitting and corrections. These functions are in ``RECTECorrector.py``. Functions ``RECTECorrector1`` and ``RECTECorrector2`` are for correcting ramp effect in the light curves observed using forward-scanning and round-trip-scanning mode.
+We created convenience functions for ramp effect modeling and corrections. These functions are in ``RECTECorrector.py``. Functions ``RECTECorrector1`` and ``RECTECorrector2`` are for correcting ramp effect in the light curves observed using forward-scanning and round-trip-scanning mode, respectively.
 
-You may also refer to :ref:`API` for the detailed explanation of the code.
+Detailed explanation of the code are in Section :ref:`API`. 
 
-We created a Jupyter notebook to demonstrate the usage of RECTE. You can also find detailed descriptions in :ref:`cookbook_label` section.
+We created a Jupyter notebook to demonstrate the usage of RECTE. Please refer it in :ref:`cookbook_label` section.
 

@@ -2,26 +2,23 @@
 Charge Trapping and Ramp effect in HST/WFC3
 ===========================================
 
-Following is a demonstration of RECTE, a physically-motivated model for
-the charge trapping/ramp effect.
+This is a demonstration of how RECTE models the ramp effect systematics.
 
 Ramp effect is the most prominent systematics for WFC3/IR detector (as
-well as other HgCdTe based detectors) in the time-series observation
-mode. It appears as an exponential (:math:`\sim1-\exp(-t)`) shaped light
+well as other HgCdTe based detectors) in the time-series observations. It appears as an exponential (:math:`\sim1-\exp(-t)`) shaped light
 curve. The typcial amplitude for the ramp is on the order of 1% in the
 first orbit and reduces to less than 0.5% for the subsequent orbit. Ramp
 effect systematics removal is critical for accurately measuring transit
 depths and spectra for transitting exoplanets
 
-In Zhou et al. (2017), we consider the charge trapping processes in the
-WFC3/IR detector and created RECTE. The essense of RECTE is that a
+In Zhou et al. (2017), we used the charge trapping processes in the
+WFC3/IR detector to model the ramp effect systemetics and created RECTE. The essense of RECTE is that a
 fraction of stmulated charges (by incoming radiation) are trapped by in
-the detector rather than being detected due to detector defects.
+the detector due to detector defects rather than being detected.
 
-Following demonstration consists of two parts. The first part is to
+This demonstration consists of two parts. The first part is to
 demonstrate how parameters that descriebe the intrument defects affect
-the shape of the ramp. The second part is to demonstrate how parameters
-that related to each observation can affect the ramp profile.
+the shape of the ramp. The second part is to demonstrate why the systematic profiles may vary in real observatons.
 
 .. code:: ipython3
 
@@ -47,7 +44,7 @@ Trapping efficiencies (``eta_s, eta_f``) \* Trap lifetimes/timescales
 (``tau_s, tau_f``)
 
 These parameters determines different aspects of the ramp effect
-profiles. Roughly speaking, given a specific fluence intensity, the
+profiles. Approximately, given a specific fluence intensity, the
 numbers of traps determine how fast the ramp rises (fewer traps, faster
 rising); trapping efficiencies determine the amplitude of the ramp; trap
 lifetimes determine the difference of the observed fluxe between the end
@@ -150,9 +147,9 @@ will change accordingly. You can also change the ``crate`` or
 Ramp Correction Demonstrations
 ------------------------------
 
-The six parameters described above stays rather constant among different
+The six parameters listed above stays quite constant in different
 observations. What determines the ramp profiles are the initial states
-of the charge trap status. Additionally trapped charges during the earth
+of the charge trap status and the fluence levels in the observations. Additionally trapped charges during the earth
 occulation also affects the ramp profiles. The initial stats and
 additional trapped charges are controlled by parameters ``trap_pop_s``,
 ``trap_pop_f``, ``dTrap_s``, and ``dTrap_f``. When correcting ramp
