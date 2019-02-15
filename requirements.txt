@@ -3,7 +3,6 @@ scipy
 matplotlib
 lmfit
 emcee
-batman-package
 jupyter
 ipywidgets
 pandas
