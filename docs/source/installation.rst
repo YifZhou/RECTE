@@ -13,9 +13,11 @@ For fitting/optimization
 * lmfit
 * emcee
 
-For transit profile calculations
+For Jupyter notebooks
 
-* batman-package
+* jupyter
+* ipywidgets
+
 
 You may download the ``requirements.txt`` file and do
 
