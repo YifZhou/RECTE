@@ -38,14 +38,14 @@ demonstration and stored in pickle file "".
 Demonstration of the uncorrected light curves
 ---------------------------------------------
 
-.. code:: ipython3
+.. code:: python
 
     import pickle
     import shelve
     import matplotlib.pyplot as plt
     %matplotlib notebook
 
-.. code:: ipython3
+.. code:: python
 
     # restore light curve array from 
     DBFileName = './binned_lightcurves_visit_01.shelve'
@@ -57,7 +57,7 @@ Demonstration of the uncorrected light curves
     orbit = saveDB['orbit']
     expTime = saveDB['expTime']
 
-.. code:: ipython3
+.. code:: python
 
     # plot light curve of the second channel and the sixth channel
     fig1 = plt.figure(figsize=(10, 6))
@@ -80,7 +80,7 @@ Demonstration of the uncorrected light curves
 
 Now let’s write a function to remove the systemacts from the lightcurves
 
-.. code:: ipython3
+.. code:: python
 
     from RECTE import RECTE
     from lmfit import Parameters, Model
@@ -214,7 +214,7 @@ Now let’s write a function to remove the systemacts from the lightcurves
             slopeArray[i, :] = slope
         return deRampArray, deRampErrArray, modelArray, crateArray, slopeArray
 
-.. code:: ipython3
+.. code:: python
 
     import pandas as pd
     import numpy as np
@@ -239,7 +239,7 @@ Now let’s write a function to remove the systemacts from the lightcurves
 
 Now, plot the result
 
-.. code:: ipython3
+.. code:: python
 
     fig2 = plt.figure(figsize=(10, 6))
     ax1 = fig2.add_subplot(211)
@@ -283,7 +283,7 @@ Now, plot the result
 .. image:: RECTE_Demonstration_files/RECTE_Demonstration_8_0.png
 
 
-.. code:: ipython3
+.. code:: python
 
     fig3 = plt.figure(figsize=(10, 6))
     ax1 = fig3.add_subplot(211)
