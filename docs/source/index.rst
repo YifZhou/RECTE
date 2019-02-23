@@ -40,4 +40,5 @@ If you find this model useful, please consider citing
    installation
    api
    applications
+   faq
    
