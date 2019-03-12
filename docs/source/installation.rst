@@ -15,13 +15,13 @@ For fitting/optimization
 * lmfit
 * emcee
 
-For Jupyter notebooks demonstration
+For the Jupyter notebook demonstration
 
 * jupyter
 * ipywidgets
 
 
-You may download the ``requirements.txt`` file and do
+You may download the `requirements.txt <https://github.com/YifZhou/RECTE/blob/master/requirements.txt>`_ file and do
 
 .. code-block:: bash
                 
@@ -29,10 +29,12 @@ You may download the ``requirements.txt`` file and do
 
 to ensure all requirements are satisfied.
 
-Installations
--------------
+Installation
+------------
 
-Ramp profile calculation is done by function ``RECTE`` in ``RECTE.py`` Please download the file ``RECTE.py`` and place it in your analysis directory. You may then simply import the function and calculate/fit the ramp profile.
+The link to the RECTE github repository is `https://github.com/YifZhou/RECTE`_. All the source code files can be found there.
+
+The ramp profile calculation is done by the function ``RECTE`` in ``RECTE.py`` Please download the file ``RECTE.py`` and place it in your analysis directory. You may then simply import the function and calculate/fit the ramp profile.
 
 .. code-block:: python
                 

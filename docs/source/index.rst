@@ -12,7 +12,7 @@ We also provide a python package for RECTE. This python package can be easily in
 
 If you have any questions, comments, or suggestions, please file an issue on github or drop the developer an `email <mailto:yifzhou@email.arizona.edu>`_.
 
-RECTE has been used in many works, you can find the list of references `here <http://adsabs.harvard.edu/cgi-bin/nph-ref_query?bibcode=2017AJ....153..243Z&amp;refs=CITATIONS&amp;db_key=AST>`_.
+RECTE has been used in many refereed publications, you can find the list of references `here <http://adsabs.harvard.edu/cgi-bin/nph-ref_query?bibcode=2017AJ....153..243Z&amp;refs=CITATIONS&amp;db_key=AST>`_.
 
 If you find this model useful, please consider citing
 
