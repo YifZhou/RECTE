@@ -13,7 +13,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="RECTE Model Primer" href="getstarted.html" />
@@ -38,6 +39,7 @@
 <p>RECTE (Ramp Effect Charge Trapping Eliminator) models and corrects one of the most prominent HST/WFC3/IR systematics – the so-called “ramp effect”. The goals of this model are to improve the precision and efficiency in HST/WFC3/IR time-resolved observations. We detailed the motivations, assumptions, derivations, and applications in <a class="reference external" href="http://stacks.iop.org/1538-3881/153/i=6/a=243?key=crossref.d8632f701456202d40ec5de454a41fff">Zhou et al. (2017)</a>.</p>
 <p>We also provide a python package for RECTE. This python package can be easily incorporated with exisiting HST/WFC3/IR time-resolved data reduction pipelines. This document demonstrate the installation, usage, and applications for this package. We have also prepared a few Jupyter notebooks for cookbook-style demonstrations.</p>
 <p>If you have any questions, comments, or suggestions, please file an issue on github or drop the developer an <a class="reference external" href="mailto:yifzhou&#37;&#52;&#48;email&#46;arizona&#46;edu">email</a>.</p>
+<p>RECTE has been used in many refereed publications, you can find the list of references <a class="reference external" href="http://adsabs.harvard.edu/cgi-bin/nph-ref_query?bibcode=2017AJ....153..243Z&amp;amp;refs=CITATIONS&amp;amp;db_key=AST">here</a>.</p>
 <p>If you find this model useful, please consider citing</p>
 <div class="code latex highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">Zhou2017</span><span class="p">,</span>
 <span class="n">author</span> <span class="o">=</span> <span class="p">{</span><span class="n">Zhou</span><span class="p">,</span> <span class="n">Yifan</span> <span class="ow">and</span> <span class="n">Apai</span><span class="p">,</span> <span class="n">D</span><span class="p">{</span>\<span class="s1">&#39;</span><span class="si">{a}</span><span class="s1">}niel and Lew, Ben W. P. and Schneider, Glenn H},</span>
@@ -71,7 +73,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#required-packages">Required packages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#installations">Installations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation">Installation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API and Modules</a><ul>
@@ -93,6 +95,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequent Asked Questions</a></li>
 </ul>
 </div>
 </div>
@@ -120,6 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation and Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API and Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="applications.html">Examples and Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequent Asked Questions</a></li>
 </ul>
 
 <div class="relations">
@@ -158,7 +162,7 @@
       &copy;2019, Yifan Zhou.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
