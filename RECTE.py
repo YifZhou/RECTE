@@ -63,8 +63,8 @@ the charge trapping explanation developed in Zhou et al. (2017).
     see Examples and Cookbook
 
     """
-    nTrap_s = 1525.38  # 1320.0
-    eta_trap_s = 0.013318  # 0.01311
+    nTrap_s = 1525.38
+    eta_trap_s = 0.013318
     tau_trap_s = 1.63e4
     nTrap_f = 162.38
     eta_trap_f = 0.008407

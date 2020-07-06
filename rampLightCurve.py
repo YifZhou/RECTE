@@ -121,7 +121,8 @@ def rampModel(
         trap_pop_f=0,
         dTrap_s=0,
         dTrap_f=0,
-        dt0=0):
+        dt0=0,
+        mode='scanning'):
     """ calculate the light curve suffer from ramp effect
 
     :param nTrap_s: number of traps (slow population)
@@ -166,8 +167,9 @@ def rampModel(
                      dTrap_s=0,
                      dTrap_f=0,
                      dt0=0,
-                     lost=0)
-    return obsCount, tExp
+                     lost=0,
+                     mode=mode)
+    return obsCount, counts, tExp
 
 
 def rampCorrection(
