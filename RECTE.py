@@ -44,8 +44,8 @@ the charge trapping explanation developed in Zhou et al. (2017).
         by fast population traps during earth occultation
     :type dTrap_f: float or numpy.array
     :param dt0: (default 0) exposure time before the very beginning
-        of the observation. It could be due to guidence adjustment
-    :type dt0: float
+        of the observation/each orbit. It could be due to guidence adjustment
+    :type dt0: float or numpy.array
     :param lost: (default 0, no lost) fraction of trapped electrons that are
         not eventually detected
     :type lost: float
@@ -72,10 +72,12 @@ the charge trapping explanation developed in Zhou et al. (2017).
     try:
         dTrap_f = itertools.cycle(dTrap_f)
         dTrap_s = itertools.cycle(dTrap_s)
-        dt0 = itertools.cycle(dt0)
     except TypeError:
         dTrap_f = itertools.cycle([dTrap_f])
         dTrap_s = itertools.cycle([dTrap_s])
+    try:
+        dt0 = itertools.cycle(dt0)
+    except TypeError:
         dt0 = itertools.cycle([dt0])
     obsCounts = np.zeros(len(tExp))
     trap_pop_s = min(trap_pop_s, nTrap_s)
